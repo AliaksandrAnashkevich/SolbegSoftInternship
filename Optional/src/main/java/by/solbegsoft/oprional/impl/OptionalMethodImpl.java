@@ -7,6 +7,13 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * @author Alexander Anashkevich
+ *
+ * If User is null - throw a RuntimeException, else display information (name, age, emails)
+ * If emails are not null - concat emails in one line(split with ',' )
+ * If name is null - set 'DEFAULT' name and display information (name, age, emails)
+ */
 public class OptionalMethodImpl implements OptionalMethod {
 
     private static final String DEFAULT_NAME="DEFAULT";

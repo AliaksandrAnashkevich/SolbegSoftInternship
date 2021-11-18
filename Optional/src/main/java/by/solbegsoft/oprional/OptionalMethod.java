@@ -4,5 +4,5 @@ import by.solbegsoft.entity.User;
 
 public interface OptionalMethod {
 
-    void userExecutor(User user);
+    String userExecutor(User user);
 }

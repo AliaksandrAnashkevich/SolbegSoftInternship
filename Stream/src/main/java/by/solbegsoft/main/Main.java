@@ -2,7 +2,7 @@ package by.solbegsoft.main;
 
 import by.solbegsoft.entity.User;
 import by.solbegsoft.stream.StreamMethod;
-import impl.StreamMethodImpl;
+import by.solbegsoft.stream.impl.StreamMethodImpl;
 
 public class Main {
 

@@ -13,7 +13,7 @@ public class OptionalMethodImpl implements OptionalMethod {
     private static final String NOT_DATA="NOT DATA";
 
     @Override
-    public void userExecutor(User user) {
+    public String userExecutor(User user) {
         StringBuilder answer = new StringBuilder();
         Optional<User> optionalUser = Optional.ofNullable(user);
 
@@ -26,7 +26,7 @@ public class OptionalMethodImpl implements OptionalMethod {
         answer.append(',');
         answer.append(emailExecutor(optionalUser));
 
-        System.out.println(answer);
+        return answer.toString();
     }
 
     private String nameExecutor(Optional<User> optionalUser){

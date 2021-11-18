@@ -6,6 +6,6 @@ import by.solbegsoft.entity.Position;
 import java.util.List;
 
 @FunctionalInterface
-public interface LambdaInterface {
-    void checkPerson(List<Person> people, Position position, int age);
+public interface PrinterInterface {
+    void print(List<Person> people);
 }

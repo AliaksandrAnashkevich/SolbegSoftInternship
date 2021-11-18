@@ -2,7 +2,6 @@ package by.solbegsoft.stream.impl;
 
 import by.solbegsoft.entity.User;
 import by.solbegsoft.stream.StreamMethod;
-import impl.StreamMethodImpl;
 import org.junit.Assert;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package impl;
+package by.solbegsoft.stream.impl;
 
 import by.solbegsoft.entity.User;
 import by.solbegsoft.stream.StreamMethod;

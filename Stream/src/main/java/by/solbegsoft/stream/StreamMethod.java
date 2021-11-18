@@ -15,4 +15,6 @@ public interface StreamMethod {
     void printUniqueUserEmails(List<User> userList);
 
     int printCountAllAge(List<User> userList);
+
+    String uniqueUsername(List<User> userList);
 }

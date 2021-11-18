@@ -2,14 +2,15 @@ package by.solbegsoft.stream.impl;
 
 import by.solbegsoft.entity.User;
 import by.solbegsoft.stream.StreamMethod;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class StreamMethodImplTest {
 
-    @org.junit.Test
+    @Test
     public void printCountAllAge() {
         StreamMethod streamMethod = new StreamMethodImpl();
         List<User> users = Arrays.asList(
@@ -22,10 +23,10 @@ public class StreamMethodImplTest {
                 new User("John", 22, Arrays.asList("reallycomplexmail444@hh.ru", "idontliketorepeattwice@mail.ru")));
         int expected = 140;
         int actual = streamMethod.printCountAllAge(users);
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
-    @org.junit.Test
+    @Test
     public void uniqueUsername() {
         StreamMethod streamMethod = new StreamMethodImpl();
         List<User> users = Arrays.asList(
@@ -38,6 +39,6 @@ public class StreamMethodImplTest {
                 new User("John", 22, Arrays.asList("reallycomplexmail444@hh.ru", "idontliketorepeattwice@mail.ru")));
         String expected = "Ivan, John, Maria, Kate, Phil, Kate, John";
         String actual = streamMethod.uniqueUsername(users);
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 }

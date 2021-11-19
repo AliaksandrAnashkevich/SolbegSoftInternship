@@ -7,5 +7,5 @@ import java.util.List;
 
 @FunctionalInterface
 public interface PrinterInterface {
-    void print(List<Person> people);
+    void print(Person person);
 }

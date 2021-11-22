@@ -15,11 +15,8 @@ class PersonProcessorImplTest {
     @Test
     void filterPerson() {
         processor.personProcessor(peopleBuilderCollection(),
-                (a) -> a.getAge() > 20,
-                (a) -> {
-                    String result = String.format("Working hours %s , Name %s", a.getPosition().workHours(), a.getName());
-                    System.out.println(result);
-                });
+                (person) -> person.getAge() > 20,
+                System.out::println);
     }
 
     private static List<Person> peopleBuilderCollection() {
@@ -30,4 +27,5 @@ class PersonProcessorImplTest {
                 new Person("Mark", "thanos@titanov.net", Position.HR, 33)
         );
     }
+
 }

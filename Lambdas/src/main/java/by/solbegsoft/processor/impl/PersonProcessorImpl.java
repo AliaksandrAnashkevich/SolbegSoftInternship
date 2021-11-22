@@ -1,12 +1,15 @@
 package by.solbegsoft.processor.impl;
 
 import by.solbegsoft.entity.Person;
+import by.solbegsoft.entity.Position;
 import by.solbegsoft.interfaces.FilterInterface;
 import by.solbegsoft.interfaces.PrinterInterface;
 import by.solbegsoft.processor.PersonProcessor;
+import lombok.var;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author Alexander Anashkevich
@@ -15,10 +18,17 @@ import java.util.Optional;
 public class PersonProcessorImpl implements PersonProcessor {
     @Override
     public void personProcessor(List<Person> people, FilterInterface filter, PrinterInterface print) {
-        people.stream()
+        List<Person> persons = people.stream()
                 .filter(filter::filter)
-                .forEach(print::print);
-        Optional<Person> optionalPerson = people.stream().filter(filter::filter).findAny();
-        optionalPerson.ifPresent(person -> System.out.println(person.getPosition().workHours()));
+                .collect(Collectors.toList());
+
+        Position workingHours = persons
+                .stream()
+                .findAny()
+                .map(Person::getPosition)
+                .orElseThrow(() -> new RuntimeException("Person doesn't exist"));
+
+        persons.forEach(print::print);
+        System.out.println(workingHours);
     }
 }

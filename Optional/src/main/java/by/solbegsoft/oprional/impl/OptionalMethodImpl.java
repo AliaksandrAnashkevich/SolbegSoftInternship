@@ -3,8 +3,14 @@ package by.solbegsoft.oprional.impl;
 import by.solbegsoft.entity.User;
 import by.solbegsoft.oprional.OptionalMethod;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static java.util.Optional.of;
+import static java.util.Optional.ofNullable;
 
 /**
  * @author Alexander Anashkevich
@@ -17,12 +23,9 @@ public class OptionalMethodImpl implements OptionalMethod {
 
     @Override
     public String userExecutor(User user) {
-        Optional<User> optionalUser = Optional.ofNullable(user);
-
-        if (!optionalUser.isPresent()) {
-            throw new RuntimeException("nullable user");
-        }
-
+        Optional<User> optionalUser =
+                Optional.ofNullable(Optional.ofNullable(user)
+                        .orElseThrow(() -> new RuntimeException("nullable user")));
         return optionalUser
                 .get()
                 .toString();
@@ -30,29 +33,23 @@ public class OptionalMethodImpl implements OptionalMethod {
 
     public String usernameExecutor(User user) {
         Optional<User> optionalUser = Optional.ofNullable(user);
-        if (optionalUser
+
+        return optionalUser
                 .filter(u -> Objects.nonNull(u.getName()))
-                .isPresent()) {
-            return optionalUser
-                    .get()
-                    .getName();
-        } else {
-            return DEFAULT_NAME;
-        }
+                .map(User::getName)
+                .orElse(DEFAULT_NAME);
     }
 
     @Override
     public String userEmailExecutor(User user) {
-        Optional<User> optionalUser = Optional.ofNullable(user);
-        if (optionalUser
-                .filter(u -> Objects.nonNull(u.getEmails()))
-                .isPresent()) {
-            return String.join(",", optionalUser
-                                            .get()
-                                            .getEmails());
-        } else {
-            return NOT_DATA;
-        }
-    }
+        List<String> optionalEmails = user.getEmails();
 
+        if (Objects.nonNull(optionalEmails)) {
+            String answer = optionalEmails.stream()
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.joining(","));
+            return answer.isEmpty() ? NOT_DATA : answer;
+        }
+        return NOT_DATA;
+    }
 }

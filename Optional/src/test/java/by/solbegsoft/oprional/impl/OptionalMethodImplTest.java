@@ -41,7 +41,7 @@ class OptionalMethodImplTest {
     }
 
     @Test
-    void usernameExecutorNull() {
+    void usernameExecutorWithNullField() {
         User user = new User(null, 12, Arrays.asList("reallycomplexmail222@hh.ru"));
         String expected = "DEFAULT";
         String actual = optionalMethod.usernameExecutor(user);
@@ -57,7 +57,7 @@ class OptionalMethodImplTest {
     }
 
     @Test
-    void userEmailExecutorNull() {
+    void userEmailExecutorWithNullField() {
         User user = new User("Ivan", 14, null);
         String expected = "NOT DATA";
         String actual = optionalMethod.userEmailExecutor(user);

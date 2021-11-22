@@ -10,7 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
         OptionalMethod optionalMethod = new OptionalMethodImpl();
-
-        System.out.println(optionalMethod.userEmailExecutor(new User(null, 12, null)));
+        System.out.println(optionalMethod.userEmailExecutor(new User("Ivan",
+                12,
+                Arrays.asList(null, null))));
     }
 }

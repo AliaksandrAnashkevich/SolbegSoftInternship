@@ -63,4 +63,12 @@ class OptionalMethodImplTest {
         String actual = optionalMethod.userEmailExecutor(user);
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    void userEmailExecutorWithNullFieldInArray() {
+        User user = new User("Ivan", 12, Arrays.asList(null, null));
+        String expected = "NOT DATA";
+        String actual = optionalMethod.userEmailExecutor(user);
+        Assertions.assertEquals(expected, actual);
+    }
 }

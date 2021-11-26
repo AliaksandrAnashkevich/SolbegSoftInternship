@@ -23,12 +23,10 @@ public class OptionalMethodImpl implements OptionalMethod {
 
     @Override
     public String userExecutor(User user) {
-        Optional<User> optionalUser =
-                Optional.ofNullable(Optional.ofNullable(user)
-                        .orElseThrow(() -> new RuntimeException("nullable user")));
-        return optionalUser
-                .get()
-                .toString();
+
+        User result  = ofNullable(user)
+                        .orElseThrow(() -> new RuntimeException("nullable user"));
+        return result.toString();
     }
 
     public String usernameExecutor(User user) {

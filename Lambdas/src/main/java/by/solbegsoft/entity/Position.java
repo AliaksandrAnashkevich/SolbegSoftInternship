@@ -1,13 +1,26 @@
 package by.solbegsoft.entity;
 
 public enum Position {
-    DEVELOPER,
-    MANAGER,
-    HR;
-
-    private static final String WORK_HORS="Working hours - 9PM - 6AM";
+    DEVELOPER{
+        @Override
+        public String workHours() {
+            return "Working hours - 9PM - 6AM";
+        }
+    },
+    MANAGER{
+        @Override
+        public String workHours() {
+            return "Working hours - 9AM - 6PM";
+        }
+    },
+    HR{
+        @Override
+        public String workHours() {
+            return "Working hours - 10AM - 4PM";
+        }
+    };
 
     public String workHours(){
-        return WORK_HORS;
-    }
+        return "NOT DATA";
+    };
 }

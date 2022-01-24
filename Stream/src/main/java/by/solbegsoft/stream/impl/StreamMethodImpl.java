@@ -52,9 +52,11 @@ public class StreamMethodImpl implements StreamMethod {
      */
     @Override
     public void printUniqueUserEmails(List<User> userList) {
-        userList.stream().flatMap(user -> user.getEmails()
-                                                .stream()
-                                                .distinct())
+        userList.stream()
+                .flatMap(user -> user
+                .getEmails()
+                .stream()
+                .distinct())
                 .forEach(System.out::println);
     }
 
